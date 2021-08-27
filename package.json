@@ -1,6 +1,6 @@
 {
   "name": "conversions",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "TypeScript library for convertions, with similar syntax to money.js",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
