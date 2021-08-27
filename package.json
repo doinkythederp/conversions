@@ -1,7 +1,7 @@
 {
   "name": "conversions",
   "version": "1.0.0",
-  "description": "TypeScript library for convertions, with similar syntax to money.js",
+  "description": "Library for converting values between measurements, designed to have a similar syntax to money.js",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "devDependencies": {
