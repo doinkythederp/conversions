@@ -3,9 +3,9 @@ Library for converting values between measurements, designed to have a similar s
 
 ## Installation
 ```terminal
-$ pnpm add doinkythederp/conversions
+$ pnpm add https://github.com/doinkythederp/conversions/releases/download/v1.0.0/conversions-1.0.0.tgz
 $ # or
-$ npm i doinkythederp/conversions
+$ npm i https://github.com/doinkythederp/conversions/releases/download/v1.0.0/conversions-1.0.0.tgz
 ```
 
 ## Usage
