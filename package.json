@@ -1,0 +1,45 @@
+{
+  "name": "conversions",
+  "version": "0.1.0",
+  "description": "TypeScript library for convertions, with similar syntax to money.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-angular": "^13.1.0",
+    "@typescript-eslint/eslint-plugin": "^4.29.3",
+    "@typescript-eslint/parser": "^4.29.3",
+    "eslint": "^7.32.0",
+    "eslint-config-aqua": "^9.0.2",
+    "eslint-config-marine": "^9.0.6",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "eslint-scope": "^5.1.1",
+    "eslint-utils": "^2.1.0",
+    "eslint-visitor-keys": "^2.1.0",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.3.2",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.4.2"
+  },
+  "scripts": {
+    "test": "node ./tests/index.js",
+    "clean": "rimraf dist",
+    "build": "pnpm clean && tsc",
+    "build:watch": "pnpm clean && tsc --watch",
+    "lint": "eslint --ext ts src",
+    "lint:fix": "eslint --fix --ext ts src",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doinkythederp/conversions.git"
+  },
+  "author": "doinkythederp",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/doinkythederp/conversions/issues"
+  },
+  "homepage": "https://github.com/doinkythederp/conversions#readme"
+}
