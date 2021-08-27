@@ -41,5 +41,8 @@
   "bugs": {
     "url": "https://github.com/doinkythederp/conversions/issues"
   },
-  "homepage": "https://github.com/doinkythederp/conversions#readme"
+  "homepage": "https://github.com/doinkythederp/conversions#readme",
+  "files": [
+    "dist"
+  ]
 }
