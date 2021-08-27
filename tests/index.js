@@ -4,7 +4,7 @@ const assert = require('assert/strict');
 
 
 // basic conversions
-const basic = new Conversions('A', {
+const basic = new Conversions({
   A: 1,
   B: 2,
   C: 3

@@ -1,12 +1,41 @@
+const BaseSymbol = Symbol('BaseMeasurement');
+
 /**
  * Class for converting from one measurement system to another
  */
 class Conversions<DataType extends Record<string, number>> {
   /**
-   * @param base The base measurement to convert from
-   * @param data The differences in measurements compared to the base
+   * @param data The differences in measurements compared to each other
+   *
+   * ```ts
+   * new Conversions({
+   *   BaseType: 1,
+   *   ComparedType2: 3, // 3x more than BaseType
+   *   ComparedType3: 1.5 // 1.5x more than BaseType
+   * });
+   *
+   * // BaseType can be inferred:
+   * new Conversions({
+   *   ComparedType2: 3, // 3x more than ComparedType1, and 2x more than ComparedType3
+   *   ComparedType3: 1.5 // 1.5x more than ComparedType1, and 0.5x as much as ComparedType2
+   * });
+   * ```
    */
-  public constructor(public base: keyof DataType, public data: DataType) {}
+  public constructor(data: DataType) {
+    this.data = data;
+
+    let base: string | typeof BaseSymbol | undefined = Object.keys(this.data).find((key) => this.data[key] === 1);
+
+    if (!base) {
+      this.data[BaseSymbol] = 1;
+      base = BaseSymbol;
+    }
+
+    this.base = base;
+  }
+
+  public data: DataType & { [BaseSymbol]?: number };
+  public readonly base: string | typeof BaseSymbol;
 
   /**
    * Converts a value from one measurement to another
@@ -29,7 +58,7 @@ class Conversions<DataType extends Record<string, number>> {
       return value.map((v) => this.convert(v, opts));
     }
 
-    return value * this.getConversionRate(opts.to, opts.from ?? this.base);
+    return value * this.getConversionRate(opts.to, opts.from ?? (this.base as keyof DataType));
   }
 
   /**
@@ -61,7 +90,7 @@ class ConversionBuilder<DataType extends Record<string, number>> {
     this.fromValue = parent.base;
   }
 
-  protected fromValue: keyof DataType;
+  protected fromValue: keyof DataType | typeof BaseSymbol;
 
   /**
    * Sets the measurement being converted from
@@ -79,7 +108,7 @@ class ConversionBuilder<DataType extends Record<string, number>> {
    * @param tuValue The measurment being converted to
    */
   public to(toValue: keyof DataType): number {
-    return this.parent.convert(this.value, { from: this.fromValue, to: toValue });
+    return this.parent.convert(this.value, { from: this.fromValue as keyof DataType, to: toValue });
   }
 }
 
